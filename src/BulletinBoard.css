@@ -1,0 +1,58 @@
+.canvas{
+    background-color:#feff3b;
+    width: 300px;
+    height: 300px; 
+    position: absolute;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.canvas:hover{
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    cursor: move;
+   flex-direction: row;
+   margin-top: 1.2rem;
+   margin-right: 1rem;
+  
+}
+
+
+.textarea {
+    padding-left: 5px;
+    height: 180px;
+    width: 290px;
+    outline:none;
+    border: none;
+    resize: none;
+    background-color: #feff3b;
+    color: black;
+    cursor: grab;
+    font-size: 25px;
+
+}
+
+.edit{
+   margin-top: 1rem;
+   bottom: 100px;
+   width: 20px;
+   margin-left: 16rem;
+   cursor: pointer; 
+}
+
+.pin{
+    margin-top: 0.05rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.close{
+    margin-left: 1.25rem;
+    margin-top: 1px;
+    width: 5px;
+    cursor: pointer;
+}
