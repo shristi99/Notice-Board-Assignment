@@ -33,19 +33,21 @@ const BulletinBoard = ({onRemove}) => {
   function handleMouseMove(e){
 
     if(!isPin && dragMove){
+       
     //taking the x and y positions
+
     const x=e.clientX - positionX;
     const y=e.clientY-positionY;
+ 
 
     //maximum height and width
     const maxWidth=window.innerWidth - canvas.current.clientWidth;
+
     const maxHeight=window.innerHeight - canvas.current.clientHeight;
+  
 
     const width=Math.max(0,Math.min(x,maxWidth));
     const height=Math.max(0,Math.min(y,maxHeight));
-
-    // canvas.current.style.left = width + "px";
-    // canvas.current.style.top =height + "px";
 
     canvas.current.style.transform =`translate(${width}px,${height}px)`;
     }
@@ -72,12 +74,41 @@ const BulletinBoard = ({onRemove}) => {
   }
 
   //pin
-  function onPin(){
+//   function onPin(){
+//     setIsPin((prev) => !prev);
+//     if(isPin)
+//     canvas.current.style.zIndex = 1000 
+ 
+  
+    
+//   }
+
+//pin
+function onPin() {
     setIsPin((prev) => !prev);
-    if(isPin)
-    canvas.current.style.zIndex = 1000 
-    // canvas.current.style.zIndex = highestZIndex;
+  
+    if (!isPin) {
+      // Find the maximum z-index among existing pinned cards
+      const pinnedCards = document.querySelectorAll('.canvas.pinned');
+      let maxZIndex = 0;
+  
+      pinnedCards.forEach((card) => {
+        const zIndex = parseInt(getComputedStyle(card).zIndex, 10);
+        if (!isNaN(zIndex) && zIndex > maxZIndex) {
+          maxZIndex = zIndex;
+        }
+      });
+  
+      // Set the current card's z-index to one greater than the maximum
+      canvas.current.style.zIndex = maxZIndex + 1;
+      canvas.current.classList.add('pinned');
+    } else {
+      // Reset the z-index and remove the 'pinned' class
+      canvas.current.style.zIndex = '';
+      canvas.current.classList.remove('pinned');
+    }
   }
+  
 
   //save
   function onSave(){

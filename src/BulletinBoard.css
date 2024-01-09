@@ -56,3 +56,6 @@
     width: 5px;
     cursor: pointer;
 }
+.canvas.pinned {
+    border: 2px solid red; /* Example styling for pinned cards */
+  }
